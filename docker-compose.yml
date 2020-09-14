@@ -1,0 +1,46 @@
+version: "3"
+services:
+  mock-api:
+    image: mock-server:1.0.0
+    build: mock-server/
+    # deploy: 
+    #   placement: 
+    #     constraints: 
+    #       - node.platform.os == linux
+    restart: always
+    ports:
+      - 5000:5000
+    networks:
+      - polling_network
+
+  py-polling:
+    image: py-polling:1.0.0
+    build: .
+    # deploy: 
+    #     placement: 
+    #     constraints: 
+    #         - node.platform.os == linux
+    restart: always
+    networks:
+        - polling_network
+
+  influxdb:
+    image: influxdb
+    # deploy: 
+    #   placement: 
+    #     constraints: 
+    #       - node.platform.os == linux
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - polling_network
+    # volumes:
+    #   #- influxdb-volume:/var/lib/influxdb
+    environment: # avoid error when reach X number of registries with one tag
+      - INFLUXDB_DATA_MAX_SERIES_PER_DATABASE=1500000
+      - INFLUXDB_DATA_MAX_VALUES_PER_TAG=0 
+
+networks:
+  polling_network:
+
