@@ -5,7 +5,7 @@
 ![Python](https://img.shields.io/badge/pymsteams-0.1.13-blue)
 ![Python](https://img.shields.io/badge/platform-linux--64%7Cwin--64-lightgrey)
 
-This python service extract information from different services loaded in *src/config/settgins.py*, parse that information and then writes it into influxDB in orther to build dashboard that allow to monitor in real-time.
+This python service extract information from different services loaded in *src/config/settings.py*, parse that information and then writes it into influxDB in orther to build dashboard that allow to monitor in real-time.
 
 In order to test the service, a docker-compose file was created with a mock-server using Flask in which random data is collected and then loaded in another influxDB service.
 
@@ -37,10 +37,11 @@ Dir structure of repo
 ## Polling
 
 ## Mock server
+Flask based mock server to test polling information from different endpoints.
 
 ### Build
 ```
-docker-compose build
+docker-compose build 
 ```
 
 ### Run
