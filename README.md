@@ -1,4 +1,4 @@
-# newcos-polling
+# py-polling
 ![Python](https://img.shields.io/badge/pypolling-v1.0.0-orange)
 ![Python](https://img.shields.io/badge/schedule-0.6.0-blue)
 ![Python](https://img.shields.io/badge/Flask-v1.1.2-blue)
